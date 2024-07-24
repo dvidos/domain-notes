@@ -5,6 +5,19 @@
 This file to keep notes on the warehousing domain
 
 
+## high level product deployment
+
+* should be deployable either
+  * as one big package (with many endpoints), or
+  * as microservices (each with many endpoints)
+* should run either:
+  * stand alone package, on customer vm
+  * many microservices, on customer k8s cluster
+  * many microservices, on cloud provider.
+* should be multi tenant
+  * each tenant has isolated data etc.
+  * potentially shard per tenant for scaling concerns.
+* make good dependencies management (i.e. storage databases, messaging solutions, caching solutions)
 
 ## high level entities (nouns)
 
@@ -54,11 +67,23 @@ This file to keep notes on the warehousing domain
 * Standard internal journey(s)
   * Cycle count (periodic, on a rolling cadence, on demand when picking is shorted etc)
   * Replenishment (from cold storage to more speedy picking shelves)
-  * Directed moves ???
+  * Directed moves (e.g. for items to be inspected, or staged things to be put away)
 
 * Standard administration processes
   * User management
   * Forks / Vehicles management
   * Locations / Stations management
-  * ...
+  * Task management (what needs to be done)
+
+## other notes
+
+Some aspect of ERP (entity resource planning) can exist in the warehouse,
+essentialy for planning and assigning work to cartons, pallets, people etc.
+Remember Diana's diagram of the basic triad of ERP: 
+
+* resources/people/machinery on one hand
+* items/goods/materials etc on the other
+* and a planning entity, for who is to perform which operation on what material, on a schedule.
+
+
 
